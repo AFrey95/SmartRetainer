@@ -2,7 +2,6 @@
 ECE 431L Project for Kulkarni Orthodontics
 
 # How to contribute
-0. NEVER TOUCH MASTER
 1. 'git pull'
 2. Switch to DEV branch
 
@@ -23,3 +22,5 @@ ECE 431L Project for Kulkarni Orthodontics
 5. When you are done with the feature, push your branch upstream. DO NOT MERGE TO DEV.
 
 'git push'
+
+NEVER TOUCH MASTER
