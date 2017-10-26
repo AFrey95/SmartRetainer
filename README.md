@@ -1,6 +1,8 @@
 # SmartRetainer
 ECE 431L Project for Kulkarni Orthodontics
 
+https://www.atlassian.com/git/tutorials
+
 # How to contribute
 1. 'git pull'
 2. Switch to DEV branch
