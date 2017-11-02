@@ -4,6 +4,15 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+   // read sensors
 
+   // store data
+
+   // if bt connection
+
+      // if get download command
+          //downlad
+      // if get delete command
+          //delete
+      
 }
