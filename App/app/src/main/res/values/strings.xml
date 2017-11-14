@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">SmartRetainer_app</string>
+    <string name="app_name">"Smart Retainer "</string>
+    <string name="txtTitle">Smart Retainer</string>
+    <string name="txt_pHValue">Value from pH sensor</string>
+    <string name="txt_Temp">Temperature from Thermistor</string>
+    <string name="txt_BiteForce">Bite Force from sensor</string>
+    <string name="txt_TouchForce">Touch Force from sensor</string>
 </resources>

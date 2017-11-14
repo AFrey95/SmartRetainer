@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name = "margin5dp"> 5dp </dimen>
+    <dimen name = "titleSize"> 40sp </dimen>
+    <dimen name = "hintSize"> 36sp </dimen>
+    <dimen name = "buttonSize"> 34sp </dimen>
+
+
+
+
+
+
+</resources>
