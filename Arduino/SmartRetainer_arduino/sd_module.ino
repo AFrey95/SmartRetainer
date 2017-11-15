@@ -10,10 +10,10 @@ void save_data(long time, int temp, int ph, int lat_f1, int lat_f2, int bite_f1,
                     + ", " + String(bite_f4);
 
 //  Serial.println("Trying to write to " + DATA_FILE);
-  File mainStorage = SD.open(DATA_FILE, FILE_WRITE);
-  if(mainStorage) {
-    mainStorage.println(dataString);
-    mainStorage.close();
+  File data = SD.open(DATA_FILE, FILE_WRITE);
+  if(data) {
+    data.println(dataString);
+    data.close();
   }
 //    Serial.println("Write successful.");
 //  } else {
@@ -25,4 +25,12 @@ bool delete_data() {
   return SD.remove(DATA_FILE);
 }
 
+void send_data() {
+  File data = SD.open(DATA_FILE);
+  while(data.available()) {
+    Serial.write(data.read());
+  }
+  data.close();
+  delete_data();
+}
 
