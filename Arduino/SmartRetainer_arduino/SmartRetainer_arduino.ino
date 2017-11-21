@@ -13,7 +13,7 @@ void setup() {
   // put your setup code here, to run once:
   SD.begin(chipSelect);
   Serial.begin(baud);
-  
+  pinMode(7, OUTPUT);
 }
 
 void loop() {
@@ -26,7 +26,7 @@ void loop() {
    
    // if bt connection
    if(Serial.available() > 0) {
-      String command = Serial.read();
+      String command = (String) Serial.read();
       // if get download command
       if(command == "download") {
           //download
@@ -36,5 +36,6 @@ void loop() {
           //delete
           delete_data();
       }
-   }   
+      
+   }
 }

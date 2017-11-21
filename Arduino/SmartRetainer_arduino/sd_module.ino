@@ -26,11 +26,15 @@ bool delete_data() {
 }
 
 void send_data() {
+  bool sent = false;
   File data = SD.open(DATA_FILE);
   while(data.available()) {
     Serial.write(data.read());
+    sent = true;
   }
   data.close();
-  delete_data();
+  if(sent) {
+    delete_data();
+  }
 }
 
