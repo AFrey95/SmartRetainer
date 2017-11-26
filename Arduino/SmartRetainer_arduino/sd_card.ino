@@ -1,3 +1,13 @@
+/*
+ * The circuit:
+  * SD card attached to SPI bus as follows:
+ ** MOSI - pin 11 on Arduino Uno/Duemilanove/Diecimila
+ ** MISO - pin 12 on Arduino Uno/Duemilanove/Diecimila
+ ** CLK - pin 13 on Arduino Uno/Duemilanove/Diecimila
+ ** CS - depends on your SD card shield or module.
+     Pin 4 used here for consistency with other Arduino examples
+*/
+
 void save_data(long time, int temp, int ph, int lat_f1, int lat_f2, int bite_f1, int bite_f2, int bite_f3, int bite_f4) {
   String dataString = String(time)
                     + ", " + String(temp) 
@@ -33,8 +43,8 @@ void send_data() {
     sent = true;
   }
   data.close();
-  if(sent) {
-    delete_data();
-  }
+//  if(sent) {
+//    delete_data();
+//  }
 }
 
