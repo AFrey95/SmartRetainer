@@ -1,15 +1,15 @@
 //pin declaration
-int ain= A1;
-float value;
+//int ain= A1;
+//float value;
 
-float Pressure_sensor_test(int ain) {
+float pressure_sensor(int ain) {
   float fsrForce;
   float fsrConductance;
   float fsrResistance;
   float fsrVoltage;
   float fsrReading;
   
-  fsrReading = analogRead(A1);  
+  fsrReading = analogRead(ain);  
  
  
   // analog voltage reading ranges from about 0 to 1023 which maps to 0V to 5V (= 5000mV)
