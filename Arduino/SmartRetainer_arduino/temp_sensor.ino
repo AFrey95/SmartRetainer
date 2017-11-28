@@ -49,5 +49,8 @@ float temp_sensor(int apin){
     // convert Celcius to Farenheit
     tempF = tempC*1.8 + 32;
     
+    // scale tempF for output ONLY TEMP F WILL BE CALIBRATED
+    tempF = 1.05 * tempF;
+    
     return tempF;
 } 
