@@ -42,7 +42,7 @@ float PH_sensor(int apin)
   for (int i = 2; i < 8; i++)               //take the average value of 6 center sample
     avgValue += buf[i];
   phValue = (float)avgValue * 5.0 / 1024 / 6; //convert the analog into millivolt
-  phValue = 3.5 * phValue;
+  phValue = 3.5 * phValue - 0.70; // PH value calibrated by shifting down by 0.70 12/1/17
 
   return phValue;
 }
