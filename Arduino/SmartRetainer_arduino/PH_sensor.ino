@@ -12,7 +12,6 @@
   This function returns a PH value ranging from 0.0 to 14.0.
 
 */
-# include <math.h>
 
 float PH_sensor(int apin)
 {

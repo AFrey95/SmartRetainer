@@ -1,4 +1,4 @@
-long bite_force_sensor(int ain) {
+long bite_sensor(int ain) {
   long value;
   long fsrForce;
   unsigned long fsrConductance;

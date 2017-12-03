@@ -1,7 +1,3 @@
-//pin declaration
-//int ain= A1;
-//float value;
-
 float pressure_sensor(int ain) {
   float fsrForce;
   float fsrConductance;

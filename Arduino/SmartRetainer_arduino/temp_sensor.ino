@@ -1,5 +1,3 @@
-#include <math.h>
-
 float temp_sensor(int apin){
     float tempF; // output temperature in degrees Farenheit
     float tempC; // output temperature in degrees Celcius

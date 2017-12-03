@@ -1,9 +1,10 @@
-
 //LIBRARIES
 #include <Time.h>
 #include <TimeLib.h>
 #include <SPI.h>
 #include <SD.h>
+#include <math.h>
+
 
 //CONSTANTS
 const String DATA_FILE = "data.txt";
@@ -27,6 +28,9 @@ int bite_pin2 = A5;
 
 //SETUP
 void setup() {
+  //Begin serial communication. Enables Bluetooth capabilities.
+  Serial.begin(baud);
+  Serial.println("Beginning SmartRetainer...");
   //Pin assignments
   pinMode(temp_pin, INPUT);
   pinMode(ph_pin, INPUT);
@@ -34,12 +38,20 @@ void setup() {
   pinMode(lat_pin2, INPUT);
   pinMode(bite_pin1, INPUT);
   pinMode(bite_pin2, INPUT);
+  
   //SD setup
-  SD.begin(chipSelect);
-  //Begin serial communication. Enables Bluetooth capabilities.
-  Serial.begin(baud);
+  Serial.print("Checking data storage...");
+  boolean sd_ready = false;
+  for(int i = 1; i <= 5 || sd_ready; i++) {
+    Serial.print(String(i) + "...");
+    sd_ready = SD.begin(chipSelect);
+  }
+  if(sd_ready) Serial.println("\nData storage working!");
+  else Serial.println("\nData storage failed! Please check your hardware!");
+  
   //Set the current time
   setTime(startTime);
+  Serial.println("SmartRetainer running! Epoch time is " + String(now()));
 }
 
 //MAIN LOOP
@@ -54,8 +66,8 @@ void loop() {
      ph = PH_sensor(ph_pin);
      lat_f1 = pressure_sensor(lat_pin1);
      lat_f2 = pressure_sensor(lat_pin2);
-     bite_f1 = pressure_sensor(bite_pin1);
-     bite_f2 = pressure_sensor(bite_pin2);
+     bite_f1 = bite_sensor(bite_pin1);
+     bite_f2 = bite_sensor(bite_pin2);
      save_data(cur_time, temp, ph, lat_f1, lat_f2, bite_f1, bite_f2);
      last_millis = millis();
    }
