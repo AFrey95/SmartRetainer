@@ -1,22 +1,15 @@
-int ain=A1;
-long value;
-
-
- long bite_force_sensor{
-  
+long bite_force_sensor(int ain) {
+  long value;
   long fsrForce;
   unsigned long fsrConductance;
   unsigned long fsrResistance;
   int fsrVoltage;
   int fsrReading;
 
- fsrReading = analogRead(A1);  
- 
- 
+  fsrReading = analogRead(ain);  
   // analog voltage reading ranges from about 0 to 1023 which maps to 0V to 5V (= 5000mV)
   fsrVoltage = map(fsrReading, 0, 1023, 0, 5000);
-   
- 
+
   if (fsrVoltage == 0) {
     
   } else {
@@ -25,13 +18,10 @@ long value;
     fsrResistance = 5000 - fsrVoltage;     // fsrVoltage is in millivolts so 5V = 5000mV
     fsrResistance *= 10000;                // 10K resistor
     fsrResistance /= fsrVoltage;
-   
  
     fsrConductance = 1000000;           // we measure in micromhos so 
     fsrConductance /= fsrResistance;
     
-    
- 
     // Use the two FSR guide graphs to approximate the force
     if (fsrConductance <= 1000) {
       fsrForce = fsrConductance / 80;
@@ -39,9 +29,7 @@ long value;
     } else {
       fsrForce = fsrConductance - 1000;
       fsrForce /= 30;
-                 
     }
-  
  }
  return(fsrForce);
 }
