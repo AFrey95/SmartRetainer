@@ -87,8 +87,9 @@ void loop() {
         case 'd': delete_data(); break;
         //send the most recent data collected
         case 'o': send_one(cur_time, temp, ph, lat_f1, lat_f2, bite_f1, bite_f2); break;
-        //send an error message
+        //send the ID number
         case 'i': send_id(); break;
+        //send an error message
         default: send_error(); break;
       }
    }
