@@ -1,5 +1,5 @@
 void save_data(time_t t, float temp, float ph, float lat_f1, 
-               float lat_f2, float bite_f1, float bite_f2) {
+               float lat_f2, long bite_f1, long bite_f2) {
   String dataString = String(t)
                     + ", " + String(temp) 
                     + ", " + String(ph)
@@ -34,7 +34,7 @@ void send_all_data() {
 }
 
 void send_one(time_t t, float temp, float ph, float lat_f1, 
-               float lat_f2, float bite_f1, float bite_f2) {
+               float lat_f2, long bite_f1, long bite_f2) {
   String dataString = String(t)
                     + ", " + String(temp) 
                     + ", " + String(ph)
@@ -42,10 +42,17 @@ void send_one(time_t t, float temp, float ph, float lat_f1,
                     + ", " + String(lat_f2)
                     + ", " + String(bite_f1)
                     + ", " + String(bite_f2);
-  Serial.print(dataString);
+  Serial.println(dataString);
+}
+
+void send_id() {
+  File data = SD.open(ID_FILE);
+  while(data.available()) {
+    Serial.write(data.read());
+  }
 }
 
 void send_error() {
-  Serial.write("Command character not recognized. Please send 'r', 'd', or 'o'.");
+  Serial.println("Command character not recognized. Please send 'r', 'd', or 'o'.");
 }
 
