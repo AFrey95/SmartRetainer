@@ -1,3 +1,16 @@
+/*
+  Austin Bergman
+  Andrew Frey
+  Kieran Holland
+  Brenden Krevis
+  12/13/2017
+  Kulkarni Orthodontics Retainer Sensor Project
+  Fall 2017
+
+  Arduino code for controlling the SmartRetainer retainer device.
+
+*/
+
 /* LIBRARIES */
 #include <Time.h>
 #include <TimeLib.h>
@@ -32,7 +45,7 @@ int bite_pin2 = A5;
 void setup() {
   //Begin serial communication. Enables Bluetooth capabilities.
   Serial.begin(baud);
-//  Serial.println("Beginning SmartRetainer...");
+  
   //Pin assignments
   pinMode(temp_pin, INPUT);
   pinMode(ph_pin, INPUT);
@@ -42,26 +55,20 @@ void setup() {
   pinMode(bite_pin2, INPUT);
   
   //SD setup
-//  Serial.print("Checking data storage...");
   boolean sd_ready = false;
   for(int i = 1; i <= 5 && !sd_ready; i++) {
-//    Serial.print(String(i) + "...");
     sd_ready = SD.begin(chipSelect);
   }
-//  if(sd_ready) Serial.println("\nData storage working!");
-//  else Serial.println("\nData storage failed! Please check your hardware!");
   
   //Set the current time
   setTime(startTime);
-//  Serial.println("SmartRetainer running! Epoch time is " + String(now()));
-//  delete_data();
 }
 
 /* MAIN LOOP */
 void loop() {
    cur_time = now(); //get current time
    
-   // Read the sensors every #{samplingPeriod} milliseconds
+   // Read the sensors (at most) every #{sampling_period} milliseconds
    // and save the data.
    if(abs(millis() - last_millis) >= sampling_period) {
      // read sensors
@@ -80,7 +87,6 @@ void loop() {
    // a command is sent from the mobile app.
    if(Serial.available() > 0) {
       char command = Serial.read();
-//      Serial.print(String(command) + ": ");
       switch(command) {
         //send all data on SD card, then wipe the card
         case 'r': send_all_data(); break;
