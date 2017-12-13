@@ -48,7 +48,7 @@ float temp_sensor(int apin){
     tempF = tempC*1.8 + 32;
     
     // scale tempF for output ONLY TEMP F WILL BE CALIBRATED
-    tempF = 1.05 * tempF;
+    tempF = 1.05 * tempF - 6;
     
     return tempF;
 } 

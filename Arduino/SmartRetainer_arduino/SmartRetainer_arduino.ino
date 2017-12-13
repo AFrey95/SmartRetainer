@@ -9,7 +9,7 @@
 /* CONSTANTS */
 const String DATA_FILE = "data.txt";
 const String ID_FILE = "id.txt";
-const int chipSelect = 4;
+const int chipSelect = 3;
 const int baud = 9600;
 const time_t startTime = 1512249503; // Epoch Time for Saturday, December 2, 2017 4:18:23 PM GMT-05:00.
                                      // Chosen as a date close to the project demo so the time keeping 
@@ -54,6 +54,7 @@ void setup() {
   //Set the current time
   setTime(startTime);
 //  Serial.println("SmartRetainer running! Epoch time is " + String(now()));
+//  delete_data();
 }
 
 /* MAIN LOOP */
@@ -68,7 +69,7 @@ void loop() {
      ph = PH_sensor(ph_pin);
      lat_f1 = pressure_sensor(lat_pin1);
 //     lat_f2 = pressure_sensor(lat_pin2);
-     lat_f2 = 0.0;
+     lat_f2 = 1;
      bite_f1 = bite_sensor(bite_pin1);
      bite_f2 = bite_sensor(bite_pin2);
      save_data(cur_time, temp, ph, lat_f1, lat_f2, bite_f1, bite_f2);
@@ -79,7 +80,7 @@ void loop() {
    // a command is sent from the mobile app.
    if(Serial.available() > 0) {
       char command = Serial.read();
-      Serial.print(String(command) + ": ");
+//      Serial.print(String(command) + ": ");
       switch(command) {
         //send all data on SD card, then wipe the card
         case 'r': send_all_data(); break;
