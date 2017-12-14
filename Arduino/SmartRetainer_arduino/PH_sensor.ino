@@ -1,6 +1,11 @@
 /*
+  PH_sensor.ino
+  
   Austin Bergman
-  11/12/2017
+  Andrew Frey
+  Kieran Holland
+  Brenden Krevis
+  12/13/2017
   Kulkarni Orthodontics Retainer Sensor Project
   Fall 2017
 
@@ -14,7 +19,7 @@
 
 */
 
-float PH_sensor(int apin)
+float pH_sensor(int apin)
 {
   // define variables
   unsigned long int avgValue;  //Store the average value of the sensor feedback

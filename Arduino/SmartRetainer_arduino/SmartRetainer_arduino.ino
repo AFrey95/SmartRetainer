@@ -1,4 +1,6 @@
 /*
+  SmartRetainer_arduino.ino
+
   Austin Bergman
   Andrew Frey
   Kieran Holland
@@ -73,7 +75,7 @@ void loop() {
    if(abs(millis() - last_millis) >= sampling_period) {
      // read sensors
      temp = temp_sensor(temp_pin);
-     ph = PH_sensor(ph_pin);
+     ph = pH_sensor(ph_pin);
      lat_f1 = pressure_sensor(lat_pin1);
 //     lat_f2 = pressure_sensor(lat_pin2);
      lat_f2 = 1;

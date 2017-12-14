@@ -1,15 +1,25 @@
 /*
-    temp_sensor(apin)
-    
-    This module takes an interger input which indicates which pin the 
-    temperature sensor is connected to on the Arduino and it provides a
-    temperature output in degrees Farenheit.
-    
-    Inputs:
-    int apin: Analog input pin to which the temperature sensor is connected
-    
-    Output:
-    float tempF:  Measured Temperature of thermistor in degrees Farenheit
+  temp_sensor.ino
+  
+  Austin Bergman
+  Andrew Frey
+  Kieran Holland
+  Brenden Krevis
+  12/13/2017
+  Kulkarni Orthodontics Retainer Sensor Project
+  Fall 2017
+  
+  temp_sensor(apin)
+  
+  This module takes an interger input which indicates which pin the 
+  temperature sensor is connected to on the Arduino and it provides a
+  temperature output in degrees Farenheit.
+  
+  Inputs:
+  int apin: Analog input pin to which the temperature sensor is connected
+  
+  Output:
+  float tempF:  Measured Temperature of thermistor in degrees Farenheit
 */
 
 float temp_sensor(int apin){
