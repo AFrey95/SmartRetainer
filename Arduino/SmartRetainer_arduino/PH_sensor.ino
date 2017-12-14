@@ -5,11 +5,12 @@
   Fall 2017
 
   PH_sensor(apin)
-  This function takes the input of the integer representing the analog pin
-  This function also takes in an integer specifying the mode of operation
-  which the measurement point of the PH meter is introduced into the system.
-
-  This function returns a PH value ranging from 0.0 to 14.0.
+  
+  Input:
+  int apin: analog input pin to which the pH sensor is connected
+  
+  Output:
+  float phValue: measured pH value ranging from 0.0 to 14.0
 
 */
 
@@ -20,9 +21,10 @@ float PH_sensor(int apin)
   float phValue; // measured PH value
   int buf[10], temp;
 
-  for (int i = 0; i < 10; i++) //Get 10 sample value from the sensor for smooth the value
+  //Get 10 sample values from the sensor in order to smooth the output
+  for (int i = 0; i < 10; i++) 
   {
-    buf[i] = analogRead(apin);
+    buf[i] = analogRead(apin); // store the readings in an array
     delay(10);
   }
   for (int i = 0; i < 9; i++) //sort the analog from small to large
@@ -43,5 +45,5 @@ float PH_sensor(int apin)
   phValue = (float)avgValue * 5.0 / 1024 / 6; //convert the analog into millivolt
   phValue = 3.5 * phValue - 0.70; // PH value calibrated by shifting down by 0.70 12/1/17
 
-  return phValue;
+  return phValue; // pH value between 0.0 and 14.0 returned
 }
