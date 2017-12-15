@@ -1,3 +1,22 @@
+/*
+  bite_force.ino
+
+  Austin Bergman
+  Andrew Frey
+  Kieran Holland
+  Brenden Krevis
+  12/15/2017
+  Kulkarni Orthodontics Retainer Sensor Project
+  Fall 2017
+
+  Input:
+  int apin: analog input pin to which the bite force sensor is connected
+  
+  Output:
+  long fsrForce: measured force value
+
+*/
+
 long bite_sensor(int ain) {
   long value;
   long fsrForce;
